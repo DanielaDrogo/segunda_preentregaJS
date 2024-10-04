@@ -32,24 +32,40 @@ let carrito = []
 while (true) {
 
     // muestro las opciones
-    
+    // let productoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
+    // eliminarDelCarrito(productoAEliminar);
 
+    let elegirOpcion = Number(prompt(`ELIJA UNA OPCION: 
+        1. agregar productos al carrito 
+        2. eliminar productos del carrito 
+        3. ver verduras 
+        4. ver frutas
+        5. ver contenido del carrito 
+        6. finalizar compra y ver el total a pagar`));
 
-    let respuesta = prompt(`¿desea agregar un producto al carrito? responda con "si" o con "no" `).toUpperCase();
-    let productoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
-    eliminarDelCarrito(productoAEliminar);
-
-    if (respuesta === "SI") {
+    if (elegirOpcion === 1) {
         agregarAlCarrito()
 
-    }else if (respuesta === "NO") {
-        alert(`gracias por la compra`)
-        break
-    } else {
-        respuesta = prompt(`Respuesta incorrecta. Ingrese "si" o "no".`).toUpperCase()
-    }
+    } else if(elegirOpcion === 2) {
+        eliminarDelCarrito()
 
-    let elegirOpcion = prompt(`eliga una opcion` )
+    } else if(elegirOpcion === 3) {
+        productos.filter ((producto) => producto.tipo == "verdura")
+
+    } else if(elegirOpcion === 4) {
+        productos.filter ((producto) => producto.tipo == "fruta")
+
+    } else if(elegirOpcion === 5) {
+        
+    } else if(elegirOpcion === 6) {
+        calcularTotal()
+
+    }else if( isNaN(elegirOpcion) ) {
+        alert(`respuesta invalida, elija una opcion numerica`)
+
+    } else {
+        alert(`la opcion para elegir es del "1" al "6"`)
+    }
 
 
 }
@@ -72,6 +88,9 @@ function agregarAlCarrito() {
 }
 
 function eliminarDelCarrito(nombreProducto) {
+    let productoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
+    eliminarDelCarrito(productoAEliminar);
+
     // Buscar el producto por su nombre en el carrito
     let indice = carrito.find(producto => producto.verdura_fruta.toLowerCase() === nombreProducto.toLowerCase());
 
