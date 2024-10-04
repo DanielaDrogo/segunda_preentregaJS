@@ -27,8 +27,6 @@ let productos = [
 
 let carrito = []
 
-
-
 while (true) {
 
     // muestro las opciones
@@ -56,6 +54,7 @@ while (true) {
         productos.filter ((producto) => producto.tipo == "fruta")
 
     } else if(elegirOpcion === 5) {
+        carrito.forEach((producto) => producto);
         
     } else if(elegirOpcion === 6) {
         calcularTotal()
