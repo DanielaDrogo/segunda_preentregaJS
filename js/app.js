@@ -28,7 +28,6 @@ let productos = [
 let carrito = []
 
 while (true) {
-
     // muestro las opciones
     let elegirOpcion = parseInt(prompt(`ELIJA UNA OPCION: 
         1. agregar productos al carrito 
@@ -39,7 +38,7 @@ while (true) {
         6. finalizar compra y ver el total a pagar
         7. salir`));
 
-    if (elegirOpcion === 1) {
+    if (elegirOpcion === 1) { 
         agregarAlCarrito()
 
     } else if(elegirOpcion === 2) {
@@ -48,15 +47,14 @@ while (true) {
         eliminarDelCarrito(nombreProductoAEliminar);
 
     } else if(elegirOpcion === 3) {
-        let verduras = productos.filter ((producto) => producto.tipos == "verdura")
-        // verduras.forEach(producto => console.log(producto.nombre));
+        let verduras = productos.filter ((producto) => producto.tipo == "verdura")
+        verduras.forEach(producto => console.log(producto.nombre));
         console.log(verduras)
-        alert(verduras)
 
     } else if(elegirOpcion === 4) {
-        let frutas = productos.filter ((producto) => producto.tipos == "fruta")
+        let frutas = productos.filter ((producto) => producto.tipo == "fruta")
+        frutas.forEach(producto => console.log(producto.nombre));
         console.log(frutas)
-        alert(frutas)
 
     } else if(elegirOpcion === 5) {
 
@@ -67,7 +65,6 @@ while (true) {
             // si el carrito tiene productos los muestra
             console.log("Contenido del carrito:");
             carrito.forEach(producto => console.log(producto.nombre));
-            
         }
 
     } else if(elegirOpcion === 6) {
