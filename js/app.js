@@ -30,10 +30,7 @@ let carrito = []
 while (true) {
 
     // muestro las opciones
-    // let productoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
-    // eliminarDelCarrito(productoAEliminar);
-
-    let elegirOpcion = Number(prompt(`ELIJA UNA OPCION: 
+    let elegirOpcion = parseInt(prompt(`ELIJA UNA OPCION: 
         1. agregar productos al carrito 
         2. eliminar productos del carrito 
         3. ver verduras 
@@ -46,6 +43,8 @@ while (true) {
 
     } else if(elegirOpcion === 2) {
         eliminarDelCarrito()
+        // let productoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
+        // eliminarDelCarrito(productoAEliminar);
 
     } else if(elegirOpcion === 3) {
         productos.filter ((producto) => producto.tipo == "verdura")
@@ -58,6 +57,7 @@ while (true) {
         
     } else if(elegirOpcion === 6) {
         calcularTotal()
+        break 
 
     }else if( isNaN(elegirOpcion) ) {
         alert(`respuesta invalida, elija una opcion numerica`)
@@ -66,16 +66,15 @@ while (true) {
         alert(`la opcion para elegir es del "1" al "6"`)
     }
 
-
 }
-
 
 // FUNCIONES //
 function agregarAlCarrito() {
-    let nombreProducto = prompt("Ingresa el nombre del producto que deseas agregar al carrito:");
+    let nombreProducto = prompt(`Ingresa el nombre del producto que deseas agregar al carrito:
+       "papa", "banana", "lechuga", "manzana", "zapallo", "zanahoria", "morron rojo", "remolacha"`);
 
     // Buscar el producto por su nombre
-    let productoEncontrado = producto.find((producto) => producto.nombre == nombreProducto).toLowerCase
+    let productoEncontrado = productos.find((producto) => producto.nombre === nombreProducto)
 
     if (productoEncontrado) {
         // Agregar el producto al carrito
@@ -106,11 +105,8 @@ function eliminarDelCarrito(nombreProducto) {
 function calcularTotal() {
 
     let total = carrito.reduce((acumulador, valorActual) => acumulador + valorActual.precio, 0);
-    alert(`el total del carrito es` + total)
-    
+    alert(`el total del carrito es ` + total)
 }
-
-
 
 
 
