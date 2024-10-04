@@ -43,8 +43,8 @@ while (true) {
 
     } else if(elegirOpcion === 2) {
         eliminarDelCarrito()
-        // let productoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
-        // eliminarDelCarrito(productoAEliminar);
+        let nombreProductoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
+        eliminarDelCarrito(nombreProductoAEliminar);
 
     } else if(elegirOpcion === 3) {
         productos.filter ((producto) => producto.tipo == "verdura")
@@ -53,7 +53,7 @@ while (true) {
         productos.filter ((producto) => producto.tipo == "fruta")
 
     } else if(elegirOpcion === 5) {
-        carrito.forEach((producto) => producto);
+        carrito.forEach((producto) => producto == producto);
         
     } else if(elegirOpcion === 6) {
         calcularTotal()
@@ -65,7 +65,6 @@ while (true) {
     } else {
         alert(`la opcion para elegir es del "1" al "6"`)
     }
-
 }
 
 // FUNCIONES //
@@ -86,24 +85,22 @@ function agregarAlCarrito() {
 }
 
 function eliminarDelCarrito(nombreProducto) {
-    let productoAEliminar = prompt("Ingresa el nombre del producto que deseas eliminar del carrito:");
-    eliminarDelCarrito(productoAEliminar);
-
     // Buscar el producto por su nombre en el carrito
-    let indice = carrito.find(producto => producto.verdura_fruta.toLowerCase() === nombreProducto.toLowerCase());
+    let productoAEliminar = carrito.find(producto => producto.nombre === nombreProducto);
 
-    if (indice !== -1) {
+    if (productoAEliminar) {
         // Si se encuentra el producto, eliminarlo del carrito
-        let productoEliminado = carrito.splice(indice, 1)[0];
-        console.log(`¡${productoEliminado.verdura_fruta} ha sido eliminado del carrito!`);
-        console.log(carrito)
+        carrito.splice(carrito.indexOf(productoAEliminar), 1);
+        console.log(`¡${productoAEliminar.nombre} ha sido eliminado del carrito!`);
+        console.log(carrito);
+
     } else {
         console.log(`No se encontró ningún producto con el nombre "${nombreProducto}" en el carrito.`);
-    }
+    } 
 }
 
 function calcularTotal() {
-
+    // suma el total de la compra
     let total = carrito.reduce((acumulador, valorActual) => acumulador + valorActual.precio, 0);
     alert(`el total del carrito es ` + total)
 }
