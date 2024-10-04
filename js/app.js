@@ -36,7 +36,8 @@ while (true) {
         3. ver verduras 
         4. ver frutas
         5. ver contenido del carrito 
-        6. finalizar compra y ver el total a pagar`));
+        6. finalizar compra y ver el total a pagar
+        7. salir`));
 
     if (elegirOpcion === 1) {
         agregarAlCarrito()
@@ -47,19 +48,36 @@ while (true) {
         eliminarDelCarrito(nombreProductoAEliminar);
 
     } else if(elegirOpcion === 3) {
-        productos.filter ((producto) => producto.tipo == "verdura")
+        let verduras = productos.filter ((producto) => producto.tipos == "verdura")
+        // verduras.forEach(producto => console.log(producto.nombre));
+        console.log(verduras)
+        alert(verduras)
 
     } else if(elegirOpcion === 4) {
-        productos.filter ((producto) => producto.tipo == "fruta")
+        let frutas = productos.filter ((producto) => producto.tipos == "fruta")
+        console.log(frutas)
+        alert(frutas)
 
     } else if(elegirOpcion === 5) {
-        carrito.forEach((producto) => producto == producto);
-        
+
+        if (carrito.length === 0) {
+            // si el carrito esta vacio
+            console.log("El carrito está vacío.");
+        } else {
+            // si el carrito tiene productos los muestra
+            console.log("Contenido del carrito:");
+            carrito.forEach(producto => console.log(producto.nombre));
+            
+        }
+
     } else if(elegirOpcion === 6) {
         calcularTotal()
         break 
 
-    }else if( isNaN(elegirOpcion) ) {
+    } else if (elegirOpcion === 7){
+        break
+
+    } else if( isNaN(elegirOpcion) ) {
         alert(`respuesta invalida, elija una opcion numerica`)
 
     } else {
