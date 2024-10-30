@@ -120,7 +120,3 @@ function calcularTotal() {
     alert(`el total del carrito es ` + total)
 }
 
-
-
-
-
